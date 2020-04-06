@@ -55,12 +55,13 @@ namespace Exercise5Garage
         private static void GarageMenu(Garage<Vehicle> garage)
         {
             Console.WriteLine();
-            var garageMenuInput = Utils.AskForNumber("________________________________"
+            var garageMenuInput = Utils.AskForNumber("\n________________________________"
                 + "\nPlease select a desired option from the following Menu:"
                 + "\n1 - List all parked vehicles in the Garage"
                 + "\n2 - Park a vehicle in the Garage"
+                + "\n3 - UnPark a vehicle in the Garage"
                 + "\n0 - Go back to main menu"
-                + "\n___________________________________");
+                + "\n___________________________________\n");
 
             switch (garageMenuInput)
             {
@@ -71,6 +72,11 @@ namespace Exercise5Garage
 
                 case 2:
                     CreateAndParkVehicleMenu(garage);
+                    break;
+                case 3:
+                    garageHandler.UnParkVehicle(garage, Utils.AskForInput("Please " +
+                        "enter the Registration Number of Vehicle to be Unparked from Garage:"));
+                    GarageMenu(garage);
                     break;
 
                 case 0:
@@ -209,5 +215,14 @@ namespace Exercise5Garage
             Console.WriteLine("The garage is full or there is already another vehicle with same registration number!\n");
         }
 
+        public static void SuccessUnparkMessage()
+        {
+            Console.WriteLine("The vehicle was successfully unparked from the garage!\n");
+        }
+
+        internal static void FailedUnparkMessage()
+        {
+            Console.WriteLine("The vehicle was not found in the garage\n");
+        }
     }
 }

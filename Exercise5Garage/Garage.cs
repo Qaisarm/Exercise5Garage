@@ -66,6 +66,21 @@ namespace Exercise5Garage
             ParkedVehicles[index] = vehicle;
             return true;
         }
+
+        internal bool UnParkVehicle(string regNr)
+        {
+            // Find an index to unpark the vehicle (if index is not null and convert registration number to lower case)
+            int index = Array.FindIndex(ParkedVehicles, i => i != null && i.RegNr.ToLower() == regNr.ToLower());
+
+            if (index >= 0)
+            {
+                ParkedVehicles[index] = null;
+                return true;
+            }
+
+            return false;
+        }
+
         public IEnumerator<T> GetEnumerator()
         {
             foreach (T item in ParkedVehicles)
