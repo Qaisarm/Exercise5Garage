@@ -25,8 +25,8 @@ namespace Exercise5Garage
             ParkedVehicles = new Vehicle[Maxcapacity];
         }
 
-        // Internal subclass for exporting the parked vehicle collection to the ConsoleUI
-        internal class ExportedListOfVehicles
+        // Internal subclass for extracting the parked vehicle collection to the ConsoleUI
+        internal class ExtractedListOfVehicles
         {
              internal int ParkingPlace { get; set; }
 
@@ -40,13 +40,13 @@ namespace Exercise5Garage
            
         }
 
-        internal IEnumerable<ExportedListOfVehicles> ListParkedVehicles()
+        internal IEnumerable<ExtractedListOfVehicles> ListParkedVehicles()
         {
             var result = ParkedVehicles
             .Where(v => v != null)
-            .Select(v => new ExportedListOfVehicles
+            .Select(v => new ExtractedListOfVehicles
             {
-                ParkingSpot = Array.IndexOf(ParkedVehicles, v) + 1,
+                ParkingPlace = Array.IndexOf(ParkedVehicles, v) + 1,
                 TypeOfVehicle = v.GetType().Name,
                 RegNr = v.RegNr,
                 Manufacturer = v.Manufacturer,
@@ -61,7 +61,7 @@ namespace Exercise5Garage
         internal bool ParkVehicle(Vehicle vehicle)
         {
             if (IsFull) return false;
-            // Find an index to park the vehicle (if index is null or there is no regnumber property)
+            // Find an index to park the vehicle (if index is null)
             int index = Array.FindIndex(ParkedVehicles, i => i == null);
             ParkedVehicles[index] = vehicle;
             return true;

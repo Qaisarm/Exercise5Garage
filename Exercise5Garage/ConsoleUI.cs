@@ -176,7 +176,7 @@ namespace Exercise5Garage
         }
 
 
-        internal static void ShowParkedVehicles(IEnumerable<Garage<Vehicle>.ExportedListOfVehicles> parkedVehicles)
+        internal static void ShowParkedVehicles(IEnumerable<Garage<Vehicle>.ExtractedListOfVehicles> parkedVehicles)
         {
             if (!parkedVehicles.Any())
             {
