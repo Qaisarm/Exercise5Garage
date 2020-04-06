@@ -60,9 +60,9 @@ namespace Exercise5Garage
 
         internal bool ParkVehicle(Vehicle vehicle)
         {
-            if (IsFull) return false;
-            // Find an index to park the vehicle (if index is null)
-            int index = Array.FindIndex(ParkedVehicles, i => i == null);
+            if (IsFull || SearchVehicleByRegNr(vehicle.RegNr)) return false;
+            // Find an index to park the vehicle (if index is null or there is no Registration Number)
+            int index = Array.FindIndex(ParkedVehicles, i => i == null || string.IsNullOrEmpty(i.RegNr));
             ParkedVehicles[index] = vehicle;
             return true;
         }
@@ -78,6 +78,16 @@ namespace Exercise5Garage
                 return true;
             }
 
+            return false;
+        }
+        internal bool SearchVehicleByRegNr(string regNr)
+        {
+            var regNrMatched = ParkedVehicles.FirstOrDefault(v => v != null && v.RegNr.ToLower() == regNr.ToLower());
+
+            if (regNrMatched != null)
+            {
+                return true;
+            }
             return false;
         }
 

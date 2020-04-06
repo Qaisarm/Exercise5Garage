@@ -29,5 +29,11 @@ namespace Exercise5Garage
             if (garage.UnParkVehicle(regNr)) { ConsoleUI.SuccessUnparkMessage(); }
             else { ConsoleUI.FailedUnparkMessage(); }
         }
+        public void SearchVehicleByRegNr(Garage<Vehicle> garage, string regNr)
+        {
+            if (garage.SearchVehicleByRegNr(regNr)) { ConsoleUI.SuccessFoundVehicle(); }
+            else { ConsoleUI.FailedFoundVehicle(); }
+        }
+
     }
 }
