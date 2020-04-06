@@ -187,7 +187,7 @@ namespace Exercise5Garage
                 Console.WriteLine("\nThe parked vehicles in the garage are:");
                 foreach (var item in parkedVehicles)
                 {
-                    Console.WriteLine("\nParking Place Nr: " + item.ParkingSpot
+                    Console.WriteLine("\nParking Place Nr: " + item.ParkingPlace
                         + "\nVehicle Type: " + item.TypeOfVehicle
                         + "\nRegistration Number: " + item.RegNr
                         + "\nColor: " + item.Color

@@ -28,13 +28,16 @@ namespace Exercise5Garage
         // Internal subclass for exporting the parked vehicle collection to the ConsoleUI
         internal class ExportedListOfVehicles
         {
+             internal int ParkingPlace { get; set; }
+
+            internal string TypeOfVehicle { get; set; }
+
+            internal string RegNr { get; set; }
+            internal string Color { get; set; }
             internal string Manufacturer { get; set; }
             internal uint NumberOfWheels { get; set; }
-            internal string Color { get; set; }
             internal uint ProductionYear { get; set; }
-            internal int ParkingSpot { get; set; }
-            internal string TypeOfVehicle { get; set; }
-            internal string RegNr { get; set; }
+           
         }
 
         internal IEnumerable<ExportedListOfVehicles> ListParkedVehicles()
