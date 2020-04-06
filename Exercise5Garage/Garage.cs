@@ -49,9 +49,9 @@ namespace Exercise5Garage
                 ParkingPlace = Array.IndexOf(ParkedVehicles, v) + 1,
                 TypeOfVehicle = v.GetType().Name,
                 RegNr = v.RegNr,
-                Manufacturer = v.Manufacturer,
-                NumberOfWheels = v.NumberOfWheels,
                 Color = v.Color,
+                Manufacturer = v.Manufacturer,
+                NumberOfWheels = v.NumberOfWheels,               
                 ProductionYear = v.ProductionYear
             });
 
