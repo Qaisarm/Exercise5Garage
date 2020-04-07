@@ -12,13 +12,13 @@ namespace Exercise5Garage
         static public void MainMenu()
         {
             Console.Clear();
-            var inputforMainMenu = Utils.AskForNumber("###########################################\n" +
+            var inputForMainMenu = Utils.AskForNumber("###########################################\n" +
                 "\nPlease select a valid option from the following menu:\n"                 
                 + "\n1 - Create a new garage"
                 + "\n0 - Close the app \n" +
                 "\n###########################################");
 
-            switch (inputforMainMenu)
+            switch (inputForMainMenu)
             {
                 case 1:
                     OpenNewGarage();
@@ -33,14 +33,14 @@ namespace Exercise5Garage
 
         }
 
-      
-
         private static void OpenNewGarage()
         {
             while (true)
             {
+                
                 Console.Clear();
-                string inputName = Utils.AskForInput("Please enter the name of your garage:\n"
+                string inputName = Utils.AskForInput("\n_____________________________\n" +
+                    "Please enter the name of your garage:\n"
                     + "(Press 0 if you want to go back to Main Menu)");
                 if (inputName == "0") MainMenu();
 
@@ -48,9 +48,13 @@ namespace Exercise5Garage
                     + "(Press 0 to if you want to cancel and go back to Main Menu)");
                 if (inputCapacity == 0) MainMenu();
 
+                Console.WriteLine("_____________________________\n");
                 var garage = garageHandler.CreateGarage(inputName, inputCapacity);
+                
+                Console.WriteLine("Your Garage has been created " +
+                    "\n_________________________________________\n");
 
-                Console.WriteLine($"Garage \"{garage.Name}\" with a Maximum capacity of {garage.Capacity} has been created!");               
+                              
                 GarageMenu(garage);
                 break;
             }
@@ -58,10 +62,13 @@ namespace Exercise5Garage
 
         private static void GarageMenu(Garage<Vehicle> garage)
         {
-            Console.WriteLine();
-            var garageMenuInput = Utils.AskForNumber("" +
-                "\n________________________________"
-                + "\nPlease select a desired option from the following Menu:\n"
+            Console.WriteLine($"" +
+                $"###########################################" +
+                $"\n Welcome to \"{garage.Name}'s\" Garage" +
+                    $"\n This garage has maximum {garage.Capacity} Places." +
+                    $"\n#######################################");
+            var garageMenuInput = Utils.AskForNumber(
+                "\nPlease select a desired option from the following Menu:\n"
                 + "\n1 - List all parked vehicles in the Garage"
                 + "\n2 - Park a vehicle in the Garage"
                 + "\n3 - UnPark a vehicle in the Garage"
@@ -74,7 +81,7 @@ namespace Exercise5Garage
             {
                 case 1:
                     garageHandler.ListParkedVehicles(garage);
-                    GarageMenu(garage);
+                    GarageMenu(garage);                    
                     break;
 
                 case 2:
@@ -201,7 +208,7 @@ namespace Exercise5Garage
         {
             if (!parkedVehicles.Any())
             {
-                Console.WriteLine("The garage is empty or Registration Number is already Used.");
+                Console.WriteLine("The garage is empty.");
             }
             else
             {

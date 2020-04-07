@@ -14,8 +14,10 @@ namespace Exercise5Garage
 
         public readonly uint Capacity;
 
+        // Count the number of Vehicles in Garage
         public int Count => ParkedVehicles.Count(i => i != null);
 
+        // Check whether Garage is full or not
         public bool IsFull => Maxcapacity <= Count;
         public Garage(string name, uint maxcapacity)
         {
