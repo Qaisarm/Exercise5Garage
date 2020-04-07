@@ -58,6 +58,12 @@ namespace Exercise5Garage
             return result;
         }
 
+        internal IEnumerable<IGrouping<string, Vehicle>> SearchVehicleByType()
+        {
+            var groupByType = ParkedVehicles.GroupBy(i => i?.GetType().Name);
+            return groupByType;
+        }
+
         internal bool ParkVehicle(Vehicle vehicle)
         {
             if (IsFull || SearchVehicleByRegNr(vehicle.RegNr)) return false;
@@ -90,6 +96,7 @@ namespace Exercise5Garage
             }
             return false;
         }
+
 
         public IEnumerator<T> GetEnumerator()
         {

@@ -9,5 +9,8 @@
 
         void SearchVehicleByRegNr(Garage<Vehicle> garage, string regNr);
 
+
+        void SearchVehicleByType(Garage<Vehicle> garage);
+
     }
 }

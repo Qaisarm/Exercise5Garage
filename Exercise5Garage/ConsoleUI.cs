@@ -66,6 +66,7 @@ namespace Exercise5Garage
                 + "\n2 - Park a vehicle in the Garage"
                 + "\n3 - UnPark a vehicle in the Garage"
                 + "\n4 - Search a vehicle in the Garage by registration number"
+                + "\n5 - Search a vehicle in the Garage by Type"
                 + "\n0 - Go back to main menu"
                 + "\n___________________________________\n");
 
@@ -87,6 +88,10 @@ namespace Exercise5Garage
                 case 4:
                     garageHandler.SearchVehicleByRegNr(garage, Utils.AskForInput("Please enter the " +
                         "registration number of Vehicle you want to search in the garage:"));
+                    GarageMenu(garage);
+                    break;
+                case 5:
+                    garageHandler.SearchVehicleByType(garage);
                     GarageMenu(garage);
                     break;
                 case 0:
@@ -215,6 +220,21 @@ namespace Exercise5Garage
             }
         }
 
+        //Group collection of objects that have a common key (Type)
+        internal static void ShowVehiclesTypes(IEnumerable<IGrouping<string, Vehicle>> listOfVehiclesByType)
+        {
+            foreach (var item in listOfVehiclesByType)
+            {
+                if (string.IsNullOrEmpty(item.Key)) { }
+                else
+                {
+                    Console.WriteLine("The garage contains {0} number of vehicles of Type: {1}",
+                        item.Count(),
+                        item.Key);
+                }
+            }
+        }
+
         public static void SuccessParkedMessage()
         {
             Console.WriteLine("The vehicle was successfully parked!\n");
@@ -225,24 +245,24 @@ namespace Exercise5Garage
             Console.WriteLine("The garage is full or there is already another vehicle with same registration number!\n");
         }
 
-        public static void SuccessUnparkMessage()
+        public static void SuccessUnparkMessage(string RegNr)
         {
-            Console.WriteLine("The vehicle was successfully unparked from the garage!\n");
+            Console.WriteLine($"The vehicle with Registration Number \" {RegNr} \" was successfully unparked from the garage!\n");
         }
 
-        internal static void FailedUnparkMessage()
+        internal static void FailedUnparkMessage(string RegNr)
         {
-            Console.WriteLine("The vehicle was not found in the garage\n");
+            Console.WriteLine($"The vehicle was not found in the garage with Registration Number \" {RegNr} \"\n");
         }
 
-        internal static void SuccessFoundVehicle()
+        internal static void SuccessFoundVehicle(string RegNr)
         {
-            Console.WriteLine("The vehicle was found in the garage with the entered registration number\n");
+            Console.WriteLine($"The vehicle found in the garage with Registration Number \" {RegNr} \"\n");
         }
 
-        internal static void FailedFoundVehicle()
+        internal static void FailedFoundVehicle(string RegNr)
         {
-            Console.WriteLine("The vehicle was not found in the garage with the entered registration number\n");
+            Console.WriteLine($"The vehicle was not found in the garage with Registration Number \" {RegNr} \"\n");
         }
     }
 }
