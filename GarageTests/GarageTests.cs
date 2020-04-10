@@ -19,7 +19,7 @@ namespace Exercise5Garage.Tests
 
             //Act
             var actualName = garage.Name;
-            var actualCapacity = garage.Capacity;
+            var actualCapacity = garage.MaxCapacity;
 
             //Assert
             Assert.AreEqual(expectedName, actualName);

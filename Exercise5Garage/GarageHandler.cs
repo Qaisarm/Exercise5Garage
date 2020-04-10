@@ -20,8 +20,10 @@ namespace Exercise5Garage
 
         public void ParkVehicle(Garage<Vehicle> garage, Vehicle vehicle)
         {
-            if (garage.ParkVehicle(vehicle)) { ConsoleUI.SuccessParkedMessage(); }
-            else { ConsoleUI.FailedParkedMessage(); }
+            if (garage.ParkVehicle(vehicle))
+            { ConsoleUI.SuccessParkedMessage(); }
+            else 
+            { ConsoleUI.FailedParkedMessage(); }
         }
 
         public void UnParkVehicle(Garage<Vehicle> garage, string regNr)

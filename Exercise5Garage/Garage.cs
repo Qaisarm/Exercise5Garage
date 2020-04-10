@@ -8,23 +8,20 @@ namespace Exercise5Garage
     public class Garage<T> : IEnumerable<T> where T : Vehicle
     {
         public string Name;
-        public static uint Maxcapacity;
-
+        public readonly uint MaxCapacity;
         private Vehicle[] ParkedVehicles;
-
-        public readonly uint Capacity;
 
         // Count the number of Vehicles in Garage
         public int Count => ParkedVehicles.Count(i => i != null);
 
         // Check whether Garage is full or not
-        public bool IsFull => Maxcapacity <= Count;
+        public bool IsFull => MaxCapacity <= Count;
         public Garage(string name, uint maxcapacity)
         {
             Name = name;
-            Maxcapacity = maxcapacity;
-            Capacity = maxcapacity;
-            ParkedVehicles = new Vehicle[Maxcapacity];
+            MaxCapacity = maxcapacity;
+
+            ParkedVehicles = new Vehicle[MaxCapacity];
         }
 
         // Internal subclass for extracting the parked vehicle collection to the ConsoleUI
@@ -59,7 +56,7 @@ namespace Exercise5Garage
 
             return result;
         }
-
+        //Group collection of objects that have a common key (Type)
         internal IEnumerable<IGrouping<string, Vehicle>> SearchVehicleByType()
         {
             var groupByType = ParkedVehicles.GroupBy(i => i?.GetType().Name);
